@@ -15,6 +15,8 @@
   # release notes.
   home.stateVersion = "25.05"; # Please read the comment before changing.
 
+  nixpkgs.config.allowUnfree = true;
+
   # The home.packages option allows you to install Nix packages into your
   # environment.
   home.packages = [
@@ -35,6 +37,11 @@
     #   echo "Hello, ${config.home.username}!"
     # '')
   ];
+
+  programs.vscode = {
+    enable=true
+    package = pkgs.vscode;
+  };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
