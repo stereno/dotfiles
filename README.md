@@ -3,8 +3,7 @@
 
 ## install Nix
 ```
-TODO: Determate Nix?
-use arch wiki. disable teremetory
+curl -fsSL https://install.determinate.systems/nix | sh -s -- install --determinate --diagnostic-endpoint=""
 ```
 
 ## install home-manager

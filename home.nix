@@ -24,6 +24,14 @@
     # # "Hello, world!" when run.
     pkgs.hello
 
+    pkgs.vivaldi
+
+    pkgs.obsidian
+    pkgs.syncthing
+    pkgs.code-cursor
+    pkgs.zed
+    pkgs.gh
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -38,9 +46,13 @@
     # '')
   ];
 
-  programs.vscode = {
-    enable=true
-    package = pkgs.vscode;
+  programs.git = {
+      enable = true;
+      package = pkgs.git;
+      userName = "stereno";
+      extraConfig = {
+          credential."https://github.com".helper = "!gh auth git-credential";
+      };
   };
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
