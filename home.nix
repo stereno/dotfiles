@@ -29,8 +29,12 @@
     pkgs.obsidian
     pkgs.syncthing
     pkgs.code-cursor
-    pkgs.zed
+    pkgs.zed-editor
     pkgs.gh
+
+    pkgs.noto-fonts
+    pkgs.noto-fonts-cjk-sans
+    pkgs.noto-fonts-cjk-serif
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
