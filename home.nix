@@ -28,9 +28,10 @@
 
     pkgs.obsidian
     pkgs.syncthing
-    pkgs.code-cursor
+    # pkgs.code-cursor # old version
     pkgs.zed-editor
     pkgs.gh
+    pkgs.direnv
 
     pkgs.noto-fonts
     pkgs.noto-fonts-cjk-sans
