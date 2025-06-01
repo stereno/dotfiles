@@ -31,7 +31,6 @@
     # pkgs.code-cursor # old version
     pkgs.zed-editor
     pkgs.gh
-    pkgs.direnv
 
     pkgs.noto-fonts
     pkgs.noto-fonts-cjk-sans
@@ -51,12 +50,19 @@
     # '')
   ];
 
-  programs.git = {
-      enable = true;
-      package = pkgs.git;
-      userName = "stereno";
-      extraConfig = {
-          credential."https://github.com".helper = "!gh auth git-credential";
+  programs ={
+      direnv = {
+          enable = true;
+          enableBashIntegration = true;
+          nix-direnv.enable = true;
+      };
+      git = {
+          enable = true;
+          package = pkgs.git;
+          userName = "stereno";
+          extraConfig = {
+              credential."https://github.com".helper = "!gh auth git-credential";
+          };
       };
   };
 
