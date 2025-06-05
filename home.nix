@@ -36,6 +36,8 @@
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-cjk-serif
 
+    pkgs.nix-direnv
+
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -54,7 +56,6 @@
       direnv = {
           enable = true;
           enableBashIntegration = true;
-          nix-direnv.enable = true;
       };
       git = {
           enable = true;
@@ -65,6 +66,7 @@
           };
       };
   };
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
