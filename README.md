@@ -12,8 +12,16 @@ nix run home-manager/master -- init --switch
 ```
 
 ## switch home-manager
+通常の場合
+
 ```
-home-manager switch --flake ~/dotfiles#outputs
+home-manager switch --flake ~/dotfiles#output
+```
+
+dev 環境の場合
+
+```
+home-mamanger switch --flake ~/dotfiles#dev
 ```
 
 ##
