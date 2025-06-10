@@ -21,7 +21,7 @@ home-manager switch --flake ~/dotfiles#output
 dev 環境の場合
 
 ```
-home-mamanger switch --flake ~/dotfiles#dev
+home-manger switch --flake ~/dotfiles#dev
 ```
 
 ##
