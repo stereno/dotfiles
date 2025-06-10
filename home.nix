@@ -30,7 +30,6 @@
     pkgs.syncthing
     # pkgs.code-cursor # old version
     pkgs.zed-editor
-    pkgs.gh
 
     pkgs.noto-fonts
     pkgs.noto-fonts-cjk-sans
@@ -50,16 +49,6 @@
     # '')
   ];
 
-  programs = {
-      git = {
-          enable = true;
-          package = pkgs.git;
-          userName = "stereno";
-          extraConfig = {
-              credential."https://github.com".helper = "!gh auth git-credential";
-          };
-      };
-  };
 
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
