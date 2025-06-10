@@ -4,14 +4,23 @@
   # Development-specific packages
   home.packages = [
     pkgs.nix-direnv
+    pkgs.gh
   ];
 
   # Development environment programs
   programs = {
     direnv = {
-      enable = true;
-      enableBashIntegration = true;
-      nix-direnv.enable = true;
+        enable = true;
+        enableBashIntegration = true;
+        nix-direnv.enable = true;
+    };
+    git = {
+        enable = true;
+        package = pkgs.git;
+        userName = "stereno";
+        extraConfig = {
+            credential."https://github.com".helper = "!gh auth git-credential";
+        };
     };
   };
 
