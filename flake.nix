@@ -17,15 +17,17 @@
       pkgs = nixpkgs.legacyPackages.${system};
     in
     {
-      homeConfigurations."outputs" = home-manager.lib.homeManagerConfiguration {
+      homeConfigurations."output" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
+        modules = [ 
+          ./home.nix
+          ./dev.nix
+        ];
+      };
 
-        # Specify your home configuration modules here, for example,
-        # the path to your home.nix.
-        modules = [ ./home.nix ];
-
-        # Optionally use extraSpecialArgs
-        # to pass through arguments to home.nix
+      homeConfigurations."dev" = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        modules = [ ./dev.nix ];
       };
     };
 }

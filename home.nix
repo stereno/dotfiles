@@ -36,8 +36,6 @@
     pkgs.noto-fonts-cjk-sans
     pkgs.noto-fonts-cjk-serif
 
-    pkgs.nix-direnv
-
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -52,11 +50,7 @@
     # '')
   ];
 
-  programs ={
-      direnv = {
-          enable = true;
-          enableBashIntegration = true;
-      };
+  programs = {
       git = {
           enable = true;
           package = pkgs.git;
