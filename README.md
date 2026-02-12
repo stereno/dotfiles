@@ -1,27 +1,20 @@
 
 # dotfiles
 
-## install Nix
-```
-curl -fsSL https://install.determinate.systems/nix | sh -s -- install --determinate --diagnostic-endpoint=""
-```
+NixOS 専用の設定リポジトリです。
 
-## install home-manager
-```
-nix run home-manager/master -- init --switch
-```
-
-## switch home-manager
-通常の場合
+## 構成
 
 ```
-home-manager switch --flake ~/dotfiles#output
+.
+├── flake.nix        # エントリーポイント
+├── home/            # home-manager 設定
+├── hosts/           # ホスト固有の設定
+└── system/          # システム共通設定
 ```
 
-dev 環境の場合
+## 適用
 
 ```
-home-manger switch --flake ~/dotfiles#dev
+sudo nixos-rebuild switch --flake ~/dotfiles#dev
 ```
-
-##
