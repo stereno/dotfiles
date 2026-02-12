@@ -1,33 +1,28 @@
 {
-  description = "Home Manager configuration of stereno";
+  description = "My NixOS Configuration";
 
   inputs = {
-    # Specify the source of Home Manager and Nixpkgs.
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs =
-    { nixpkgs, home-manager, ... }:
-    let
+  outputs = { self, nixpkgs, home-manager, ... }@inputs: {
+    nixosConfigurations.dev = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
-    in
-    {
-      homeConfigurations."output" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ 
-          ./home.nix
-          ./dev.nix
-        ];
-      };
-
-      homeConfigurations."dev" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        modules = [ ./dev.nix ];
-      };
+      specialArgs = { inherit inputs; };
+      modules = [
+        ./hosts/dev
+        ./system
+        home-manager.nixosModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.user = import ./home;
+        }
+      ];
     };
+  };
 }
