@@ -24,9 +24,14 @@
     fcitx5.addons = with pkgs; [
       fcitx5-mozc
       fcitx5-gtk
+      fcitx5-qt
       qt6Packages.fcitx5-configtool
     ];
   };
+
+  # Plasma 6 Wayland では Qt6 がネイティブ Wayland IM プロトコルを使うため
+  # NixOS モジュールが自動設定する QT_IM_MODULE=fcitx が干渉するのを防ぐ
+  environment.sessionVariables.QT_IM_MODULE = "";
 
   fonts = {
     packages = with pkgs; [
