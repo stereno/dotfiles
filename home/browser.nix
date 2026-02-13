@@ -4,10 +4,6 @@
     package = pkgs.vivaldi.override {
       proprietaryCodecs = true;
     };
-    commandLineArgs = [
-      "--enable-features=UseOzonePlatform"
-      "--ozone-platform=wayland"
-    ];
   };
 
   home.sessionVariables = {
