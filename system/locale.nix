@@ -26,7 +26,6 @@
       fcitx5-gtk
       qt6Packages.fcitx5-configtool
     ];
-    fcitx5.waylandFrontend = true;
   };
 
   fonts = {
@@ -35,12 +34,11 @@
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
       noto-fonts-color-emoji
-      nerd-fonts.jetbrains-mono
     ];
     fontconfig.defaultFonts = {
       serif = [ "Noto Serif CJK JP" "Noto Serif" ];
       sansSerif = [ "Noto Sans CJK JP" "Noto Sans" ];
-      monospace = [ "JetBrainsMono Nerd Font" "Noto Sans Mono CJK JP" ];
+      monospace = [ "Noto Sans Mono CJK JP" ];
       emoji = [ "Noto Color Emoji" ];
     };
   };
