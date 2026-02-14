@@ -1,4 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  sddm-astronaut = pkgs.sddm-astronaut.override {
+    embeddedTheme = "black_hole";
+  };
+in
+{
   # Wayland でも SDDM・XWayland のために必要
   services.xserver.enable = true;
 
@@ -6,7 +12,11 @@
   services.displayManager.sddm = {
     enable = true;
     wayland.enable = true;
+    theme = "sddm-astronaut-theme";
+    extraPackages = [ sddm-astronaut ];
   };
+
+  environment.systemPackages = [ sddm-astronaut ];
 
   # KDE Plasma 6
   services.desktopManager.plasma6.enable = true;

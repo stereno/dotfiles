@@ -29,12 +29,9 @@
     ];
   };
 
-  # Plasma 6 Wayland では Qt6 がネイティブ Wayland IM プロトコルを使うため
-  # NixOS モジュールが自動設定する QT_IM_MODULE=fcitx が干渉するのを防ぐ
-  environment.sessionVariables.QT_IM_MODULE = "";
-
   fonts = {
     packages = with pkgs; [
+      inter
       noto-fonts
       noto-fonts-cjk-sans
       noto-fonts-cjk-serif
@@ -42,7 +39,7 @@
     ];
     fontconfig.defaultFonts = {
       serif = [ "Noto Serif CJK JP" "Noto Serif" ];
-      sansSerif = [ "Noto Sans CJK JP" "Noto Sans" ];
+      sansSerif = [ "Inter" "Noto Sans CJK JP" "Noto Sans" ];
       monospace = [ "Noto Sans Mono CJK JP" ];
       emoji = [ "Noto Color Emoji" ];
     };
