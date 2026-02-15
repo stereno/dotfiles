@@ -26,6 +26,7 @@
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "bak";
+          home-manager.overwriteBackup = true;
           home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
           home-manager.users.user = import ./home;
         }
