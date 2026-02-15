@@ -62,7 +62,7 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.user = {
     isNormalUser = true;
-    extraGroups = [ "wheel" "networkmanager" ]; # Enable ‘sudo’ for the user.
+    extraGroups = [ "wheel" "networkmanager" "input" "uinput" ]; # Enable 'sudo' for the user.
   };
 
   # programs.firefox.enable = true;
