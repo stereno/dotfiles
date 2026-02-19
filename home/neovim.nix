@@ -13,6 +13,12 @@
         p.yaml
         p.markdown
       ]))
+      telescope-nvim
+      plenary-nvim
+    ];
+
+    extraPackages = with pkgs; [
+      ripgrep
     ];
 
     extraLuaConfig = ''
@@ -27,6 +33,11 @@
 
       vim.opt.ignorecase = true
       vim.opt.smartcase = true
+
+      -- Telescope
+      vim.keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>")
+      vim.keymap.set("n", "<leader>fg", "<cmd>Telescope live_grep<cr>")
+      vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
     '';
   };
 }
