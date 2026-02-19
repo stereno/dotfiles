@@ -4,6 +4,7 @@
   services.tailscale = {
     enable = true;
     openFirewall = true;
+    extraUpFlags = [ "--ssh" ];
   };
 
   # OpenSSH（Tailscale SSH のフォールバック）

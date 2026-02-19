@@ -8,6 +8,7 @@
     ./terminal.nix
     ./tmux.nix
     ./obsidian.nix
+    ./neovim.nix
   ];
 
   home.stateVersion = "25.11";
