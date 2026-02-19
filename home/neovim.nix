@@ -5,6 +5,14 @@
 
     plugins = with pkgs.vimPlugins; [
       tokyonight-nvim
+      (nvim-treesitter.withPlugins (p: [
+        p.nix
+        p.lua
+        p.bash
+        p.json
+        p.yaml
+        p.markdown
+      ]))
     ];
 
     extraLuaConfig = ''
