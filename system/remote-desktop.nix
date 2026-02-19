@@ -1,4 +1,10 @@
-{ pkgs, ... }: {
+{ pkgs, ... }:
+let
+  displayOutput = "HDMI-A-1";
+  originalMode = "1920x1200@59.95";
+  kscreen = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor";
+in
+{
   # Sunshine ストリーミングサーバー（リモートデスクトップ用）
   services.sunshine = {
     enable = true;
@@ -8,7 +14,6 @@
   };
 
   # 仮想入力デバイス（マウス・キーボード）に必要
-  # uinput カーネルモジュールのロード + /dev/uinput の udev ルールを自動設定
   hardware.uinput.enable = true;
 
   # KWin にソフトウェアカーソルを強制（KMS キャプチャにカーソルを含めるため）
