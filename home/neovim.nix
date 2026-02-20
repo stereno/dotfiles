@@ -12,6 +12,11 @@
         p.json
         p.yaml
         p.markdown
+        p.typescript
+        p.javascript
+        p.python
+        p.go
+        p.rust
       ]))
       telescope-nvim
       plenary-nvim
@@ -23,6 +28,10 @@
     extraPackages = with pkgs; [
       ripgrep
       nil # Nix LSP
+      nodePackages.typescript-language-server # TypeScript/JS LSP
+      pyright # Python LSP
+      gopls # Go LSP
+      rust-analyzer # Rust LSP
     ];
 
     extraLuaConfig = ''
@@ -50,7 +59,27 @@
         cmd = { "nil" },
         capabilities = capabilities,
       })
-      vim.lsp.enable("nil_ls")
+      vim.lsp.config("ts_ls", {
+        cmd = { "typescript-language-server", "--stdio" },
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config("pyright", {
+        cmd = { "pyright-langserver", "--stdio" },
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config("gopls", {
+        cmd = { "gopls" },
+        capabilities = capabilities,
+      })
+
+      vim.lsp.config("rust_analyzer", {
+        cmd = { "rust-analyzer" },
+        capabilities = capabilities,
+      })
+
+      vim.lsp.enable({ "nil_ls", "ts_ls", "pyright", "gopls", "rust_analyzer" })
 
       -- nvim-cmp
       local cmp = require("cmp")
