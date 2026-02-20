@@ -9,6 +9,7 @@
     ./tmux.nix
     ./obsidian.nix
     ./neovim.nix
+    ./cli-tools.nix
   ];
 
   home.stateVersion = "25.11";
