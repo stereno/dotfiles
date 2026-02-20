@@ -94,6 +94,17 @@
           ["<CR>"] = cmp.mapping.confirm({ select = false }),
         }),
       })
+
+      -- TUI tools
+      vim.keymap.set("n", "<leader>gg", function()
+        vim.cmd("tabnew | terminal lazygit")
+        vim.cmd("startinsert")
+      end, { desc = "lazygit" })
+
+      vim.keymap.set("n", "<leader>e", function()
+        vim.cmd("tabnew | terminal yazi " .. vim.fn.expand("%:p:h"))
+        vim.cmd("startinsert")
+      end, { desc = "yazi" })
     '';
   };
 }
