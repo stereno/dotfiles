@@ -59,9 +59,10 @@
 
       # --- ステータスバー（TokyoNight Night テーマ） ---
       set -g status-style "bg=#1a1b26,fg=#c0caf5"
-      set -g status-left "#[fg=#7aa2f7,bold] #S "
-      set -g status-left-length 20
-      set -g status-right ""
+      set -g status-left-length 40
+      set -g status-left "#{?client_prefix,#[bg=#e0af68],#{?pane_in_mode,#[bg=#9ece6a],#[bg=#7aa2f7]}}#[fg=#1a1b26,bold] #{?client_prefix,PREFIX,#{?pane_in_mode,COPY,NORMAL}} #[default] #[fg=#7aa2f7,bold]#S #[default]"
+      set -g status-right-length 60
+      set -g status-right "#[fg=#9ece6a] #(git -C #{pane_current_path} branch --show-current 2>/dev/null) #[fg=#565f89]%m/%d #[fg=#c0caf5]%H:%M "
       set -g window-status-format "#[fg=#565f89] #I:#W "
       set -g window-status-current-format "#[fg=#7aa2f7,bg=#292e42,bold] #I:#W "
       set -g window-status-separator ""
@@ -69,6 +70,8 @@
       # --- ペインボーダー ---
       set -g pane-border-style "fg=#292e42"
       set -g pane-active-border-style "fg=#7aa2f7"
+      set -g display-panes-active-colour "#7aa2f7"
+      set -g display-panes-colour "#565f89"
 
       # --- メッセージ ---
       set -g message-style "bg=#292e42,fg=#c0caf5"
