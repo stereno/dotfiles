@@ -10,12 +10,13 @@
   # OpenSSH（Tailscale SSH のフォールバック）
   services.openssh = {
     enable = true;
+    openFirewall = false;
     settings = {
       PasswordAuthentication = false;
       PermitRootLogin = "no";
     };
   };
 
-  # Tailscale インターフェースを信頼
+  # Tailscale インターフェースのみ信頼・SSH 許可
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
 }
