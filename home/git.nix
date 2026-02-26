@@ -1,9 +1,9 @@
 { ... }: {
   programs.git = {
     enable = true;
-    userName = "stereno";
-    userEmail = "160313150+stereno@users.noreply.github.com";
-    extraConfig = {
+    settings = {
+      user.name = "stereno";
+      user.email = "160313150+stereno@users.noreply.github.com";
       init.defaultBranch = "main";
     };
   };

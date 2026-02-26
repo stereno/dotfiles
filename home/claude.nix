@@ -19,7 +19,7 @@
       for ((i=0; i<filled; i++)); do bar+="█"; done
       for ((i=0; i<empty; i++)); do bar+="░"; done
 
-      out="$bar ${ctx}%  +${added} -${removed}"
+      out="$bar ''${ctx}%  +''${added} -''${removed}"
       [ -n "$branch" ] && out="$out  $branch"
       out="$out  $time"
 

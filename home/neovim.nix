@@ -34,7 +34,7 @@
       rust-analyzer # Rust LSP
     ];
 
-    extraLuaConfig = ''
+    initLua = ''
       vim.g.mapleader = " "
 
       vim.cmd.colorscheme("tokyonight-night")
@@ -57,25 +57,30 @@
 
       vim.lsp.config("nil_ls", {
         cmd = { "nil" },
+        root_markers = { "flake.nix", "shell.nix", "default.nix" },
         capabilities = capabilities,
       })
       vim.lsp.config("ts_ls", {
         cmd = { "typescript-language-server", "--stdio" },
+        root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
         capabilities = capabilities,
       })
 
       vim.lsp.config("pyright", {
         cmd = { "pyright-langserver", "--stdio" },
+        root_markers = { "pyrightconfig.json", "pyproject.toml", "setup.py" },
         capabilities = capabilities,
       })
 
       vim.lsp.config("gopls", {
         cmd = { "gopls" },
+        root_markers = { "go.mod" },
         capabilities = capabilities,
       })
 
       vim.lsp.config("rust_analyzer", {
         cmd = { "rust-analyzer" },
+        root_markers = { "Cargo.toml", "rust-project.json" },
         capabilities = capabilities,
       })
 

@@ -6,8 +6,10 @@ let
 in
 {
   # Sunshine ストリーミングサーバー（リモートデスクトップ用）
+  # TODO: nixpkgs upstream で sunshine のビルドが修正されたら enable に戻す
+  # https://github.com/NixOS/nixpkgs/issues/475181
   services.sunshine = {
-    enable = true;
+    enable = false;
     autoStart = true;
     capSysAdmin = true; # Wayland/KMS キャプチャに必須
     openFirewall = false;

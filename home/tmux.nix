@@ -41,6 +41,8 @@
       # --- ペイン分割（直感的な記号 + 現在のディレクトリを引き継ぎ） ---
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
+      bind '"' split-window -v -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
 
       # --- コピーモード強化（Vim ライク） ---
       bind -T copy-mode-vi v send-keys -X begin-selection
