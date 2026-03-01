@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(nix eval:*)",
+      "Bash(nix build:*)",
+      "Bash(nix search:*)",
+      "Bash(nix flake:*)",
+      "WebSearch",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:nix-community.github.io)",
+      "WebFetch(domain:raw.githubusercontent.com)",
+      "WebFetch(domain:neovim.io)",
+      "WebFetch(domain:wiki.nixos.org)",
+      "WebFetch(domain:mynixos.com)"
+    ],
+    "deny": [
+      "Bash(sudo nixos-rebuild:*)",
+      "Bash(nix-collect-garbage:*)",
+      "Bash(rm -rf:*)"
+    ]
+  }
+}

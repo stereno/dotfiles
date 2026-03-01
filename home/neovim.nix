@@ -20,6 +20,7 @@
       ]))
       telescope-nvim
       plenary-nvim
+      yazi-nvim
       nvim-cmp
       cmp-nvim-lsp
       cmp-buffer
@@ -53,33 +54,39 @@
       vim.keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>")
 
       -- LSP
+      vim.lsp.set_log_level("DEBUG")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
       vim.lsp.config("nil_ls", {
         cmd = { "nil" },
+        filetypes = { "nix" },
         root_markers = { "flake.nix", "shell.nix", "default.nix" },
         capabilities = capabilities,
       })
       vim.lsp.config("ts_ls", {
         cmd = { "typescript-language-server", "--stdio" },
+        filetypes = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
         root_markers = { "tsconfig.json", "jsconfig.json", "package.json" },
         capabilities = capabilities,
       })
 
       vim.lsp.config("pyright", {
         cmd = { "pyright-langserver", "--stdio" },
+        filetypes = { "python" },
         root_markers = { "pyrightconfig.json", "pyproject.toml", "setup.py" },
         capabilities = capabilities,
       })
 
       vim.lsp.config("gopls", {
         cmd = { "gopls" },
+        filetypes = { "go", "gomod", "gowork", "gotmpl" },
         root_markers = { "go.mod" },
         capabilities = capabilities,
       })
 
       vim.lsp.config("rust_analyzer", {
         cmd = { "rust-analyzer" },
+        filetypes = { "rust" },
         root_markers = { "Cargo.toml", "rust-project.json" },
         capabilities = capabilities,
       })
@@ -106,10 +113,8 @@
         vim.cmd("startinsert")
       end, { desc = "lazygit" })
 
-      vim.keymap.set("n", "<leader>e", function()
-        vim.cmd("tabnew | terminal yazi " .. vim.fn.expand("%:p:h"))
-        vim.cmd("startinsert")
-      end, { desc = "yazi" })
+      require("yazi").setup({})
+      vim.keymap.set("n", "<leader>e", "<cmd>Yazi<cr>", { desc = "yazi" })
     '';
   };
 }

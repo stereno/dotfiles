@@ -18,6 +18,15 @@ in
 
   environment.systemPackages = [ sddm-astronaut ];
 
+  # AppImage サポート
+  programs.appimage = {
+    enable = true;
+    binfmt = true;
+  };
+
+  # 外部バイナリ用の動的リンカ互換レイヤー
+  programs.nix-ld.enable = true;
+
   # KDE Plasma 6
   services.desktopManager.plasma6.enable = true;
 
