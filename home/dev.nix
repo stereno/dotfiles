@@ -3,4 +3,9 @@
     claude-code
     tree
   ];
+  
+  programs.zed-editor = {
+    enable = true;
+    installRemoteServer = true;
+  };
 }
