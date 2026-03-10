@@ -1,18 +1,14 @@
-{ pkgs, ... }:
-{
+{ pkgs, ... }: {
   imports = [
     ./shell.nix
     ./git.nix
-    ./dev.nix
-    ./browser.nix
-    ./theme.nix
-    ./terminal.nix
-    ./tmux.nix
-    ./obsidian.nix
     ./neovim.nix
+    ./tmux.nix
     ./cli-tools.nix
     ./claude.nix
   ];
 
+  home.username = "user";
+  home.homeDirectory = "/home/user";
   home.stateVersion = "25.11";
 }

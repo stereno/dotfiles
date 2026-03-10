@@ -26,6 +26,9 @@
     ];
 
     extraConfig = ''
+      # --- デフォルトシェル ---
+      set -g default-shell ${pkgs.fish}/bin/fish
+
       # --- ペイン移動（Vim 方向キー） ---
       bind h select-pane -L
       bind j select-pane -D

@@ -14,7 +14,14 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs: {
+  outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs:
+  let
+    mkHome = system: modules: home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages.${system};
+      modules = modules;
+    };
+  in
+  {
     nixosConfigurations.dev = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       specialArgs = { inherit inputs; };
@@ -30,6 +37,16 @@
           home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
           home-manager.users.user = import ./home;
         }
+      ];
+    };
+
+    homeConfigurations = {
+      core = mkHome "x86_64-linux" [
+        ./home/core.nix
+      ];
+      desktop = mkHome "x86_64-linux" [
+        plasma-manager.homeModules.plasma-manager
+        ./home/desktop.nix
       ];
     };
   };

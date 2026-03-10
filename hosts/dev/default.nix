@@ -62,8 +62,11 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.user = {
     isNormalUser = true;
+    shell = pkgs.fish;
     extraGroups = [ "wheel" "networkmanager" "input" "uinput" ]; # Enable 'sudo' for the user.
   };
+
+  programs.fish.enable = true;
 
   # programs.firefox.enable = true;
 

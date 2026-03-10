@@ -8,5 +8,8 @@
     fd
     jq
     eza
+    claude-code
+    opencode
+    tree
   ];
 }
