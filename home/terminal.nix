@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       theme = "TokyoNight Night";
-      font-family = "Noto Sans Mono CJK JP";
+      font-family = "NotoSansM Nerd Font Mono";
       font-size = 13;
       adjust-cell-height = "20%";
       background-opacity = 0.92;

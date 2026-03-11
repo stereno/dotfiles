@@ -26,7 +26,7 @@
         pointSize = 10;
       };
       fixedWidth = {
-        family = "Noto Sans Mono CJK JP";
+        family = "NotoSansM Nerd Font Mono";
         pointSize = 10;
       };
       small = {
