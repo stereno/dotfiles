@@ -26,4 +26,14 @@
       echo "$out"
     '';
   };
+
+  home.file.".claude/mcp.json".text = builtins.toJSON {
+    mcpServers = {
+      codex = {
+        type    = "stdio";
+        command = "codex";
+        args    = [ "mcp" ];
+      };
+    };
+  };
 }

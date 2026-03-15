@@ -14,6 +14,10 @@
       gl = "git log --oneline";
       gd = "git diff";
 
+      # AI CLI
+      cx = "codex";
+      cxa = "codex-acp";
+
       # eza
       ls = "eza";
       ll = "eza -la";
@@ -26,6 +30,37 @@
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = true;
+    defaultCommand = "fd --type f --hidden --follow --exclude .git";
+    fileWidgetCommand = "fd --type f --hidden --follow --exclude .git";
+    changeDirWidgetCommand = "fd --type d --hidden --follow --exclude .git";
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+  };
+
+  programs.atuin = {
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      auto_sync = false;
+      update_check = false;
+      search_mode = "fuzzy";
+      filter_mode = "directory";
+      filter_mode_shell_up_key_binding = "directory";
+      workspaces = true;
+      style = "compact";
+      inline_height = 20;
+      show_preview = true;
+      enter_accept = false;
+      search.filters = [ "directory" "workspace" "session" "global" ];
+    };
   };
 
   programs.starship = {
