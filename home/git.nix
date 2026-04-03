@@ -5,6 +5,7 @@
       user.name = "stereno";
       user.email = "160313150+stereno@users.noreply.github.com";
       init.defaultBranch = "main";
+      ghq.root = "~/repos";
     };
   };
 

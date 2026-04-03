@@ -1,6 +1,50 @@
 { pkgs, ... }: {
   programs.fish = {
     enable = true;
+
+    interactiveShellInit = ''
+      function __tmux_auto_rename --on-variable PWD
+          if not set -q TMUX; return; end
+
+          set -l git_toplevel (git rev-parse --show-toplevel 2>/dev/null)
+
+          if test -n "$git_toplevel"
+              set -l branch (git branch --show-current 2>/dev/null)
+              if test -n "$branch"
+                  tmux rename-window $branch
+              else
+                  tmux rename-window (basename $git_toplevel)
+              end
+              tmux rename-session (basename $git_toplevel)
+          else
+              tmux rename-window (basename $PWD)
+          end
+      end
+      __tmux_auto_rename
+    '';
+
+    functions = {
+      tp = ''
+        set -l selected (ghq list --full-path | fzf --tmux)
+        or return
+
+        set -l name (basename $selected)
+
+        if set -q TMUX
+            if not tmux has-session -t=$name 2>/dev/null
+                tmux new-session -d -s $name -c $selected
+            end
+            tmux switch-client -t $name
+        else
+            if tmux has-session -t=$name 2>/dev/null
+                tmux attach-session -t $name
+            else
+                tmux new-session -s $name -c $selected
+            end
+        end
+      '';
+    };
+
     shellAbbrs = {
       # NixOS rebuild
       nrs = "sudo nixos-rebuild switch --flake ~/dotfiles#$(hostname)";

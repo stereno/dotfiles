@@ -13,5 +13,6 @@
     codex
     codex-acp
     tree
+    ghq
   ];
 }

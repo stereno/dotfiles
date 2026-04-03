@@ -62,6 +62,10 @@
       set -g pane-base-index 1
       set -g renumber-windows on
 
+      # --- ウィンドウ名の自動変更を無効化（Fish フックで制御） ---
+      set -g automatic-rename off
+      set -g allow-rename on
+
       # --- ステータスバー（TokyoNight Night テーマ） ---
       set -g status-style "bg=#1a1b26,fg=#c0caf5"
       set -g status-left-length 40
