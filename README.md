@@ -18,9 +18,3 @@ NixOS 専用の設定リポジトリです。
 ```
 sudo nixos-rebuild switch --flake ~/dotfiles#dev
 ```
-
-## Codex
-
-Codex CLI を Nix で管理しています（`codex`, `codex-acp`）。
-認証は OAuth を利用するため、API キーなどの認証情報はこのリポジトリに保存しません。
-初回は `codex` または `codex-acp` 実行時にログインして利用します。
