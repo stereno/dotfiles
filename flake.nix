@@ -16,8 +16,13 @@
 
   outputs = { self, nixpkgs, home-manager, plasma-manager, ... }@inputs:
   let
+    overlays = [ ];
+
     mkHome = system: modules: home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system overlays;
+        config.allowUnfree = true;
+      };
       modules = modules;
     };
   in
@@ -30,6 +35,7 @@
         ./system
         home-manager.nixosModules.home-manager
         {
+          nixpkgs.overlays = overlays;
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
           home-manager.backupFileExtension = "bak";

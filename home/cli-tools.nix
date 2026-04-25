@@ -9,7 +9,6 @@
     jq
     eza
     claude-code
-    opencode
     codex
     codex-acp
     tree

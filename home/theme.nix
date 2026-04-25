@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ config, pkgs, ... }: {
   # --- パッケージ ---
   home.packages = with pkgs; [
     papirus-icon-theme
@@ -94,6 +94,9 @@
     theme = {
       name = "Breeze-Dark";
       package = pkgs.kdePackages.breeze-gtk;
+    };
+    gtk4 = {
+      theme = config.gtk.theme;
     };
     iconTheme = {
       name = "Papirus-Dark";

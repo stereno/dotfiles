@@ -2,6 +2,8 @@
   programs.neovim = {
     enable = true;
     defaultEditor = true;
+    withRuby = false;
+    withPython3 = false;
 
     plugins = with pkgs.vimPlugins; [
       tokyonight-nvim
@@ -36,11 +38,11 @@
     extraPackages = with pkgs; [
       ripgrep
       nil # Nix LSP
-      nodePackages.typescript-language-server # TypeScript/JS LSP
+      typescript-language-server # TypeScript/JS LSP
       pyright # Python LSP
       gopls # Go LSP
       rust-analyzer # Rust LSP
-      nixfmt-rfc-style # Nix formatter
+      nixfmt # Nix formatter
       prettierd # JS/TS/JSON/YAML/Markdown formatter
       black # Python formatter
       go # gofmt
