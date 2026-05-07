@@ -43,6 +43,10 @@
             end
         end
       '';
+
+      fish_user_key_bindings = ''
+        bind alt-g tp
+      '';
     };
 
     shellAbbrs = {
