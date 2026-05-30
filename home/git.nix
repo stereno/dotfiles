@@ -9,6 +9,12 @@
     };
   };
 
+  programs.delta = {
+    enable = true;
+    enableGitIntegration = true;
+    options.navigate = true;
+  };
+
   programs.gh = {
     enable = true;
     settings = {
