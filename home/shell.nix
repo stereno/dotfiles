@@ -27,25 +27,11 @@
       tp = ''
         set -l selected (ghq list --full-path | fzf --tmux)
         or return
-
-        set -l name (basename $selected)
-
-        if set -q TMUX
-            if not tmux has-session -t=$name 2>/dev/null
-                tmux new-session -d -s $name -c $selected
-            end
-            tmux switch-client -t $name
-        else
-            if tmux has-session -t=$name 2>/dev/null
-                tmux attach-session -t $name
-            else
-                tmux new-session -s $name -c $selected
-            end
-        end
+        cd $selected
       '';
 
       fish_user_key_bindings = ''
-        bind alt-g tp
+        bind \cg tp
       '';
     };
 

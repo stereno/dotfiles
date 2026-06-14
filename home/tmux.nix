@@ -84,6 +84,9 @@
 
       # --- メッセージ ---
       set -g message-style "bg=#292e42,fg=#c0caf5"
+
+      # --- セッション破棄時に別セッションへ移動（なければ終了） ---
+      set -g detach-on-destroy off
     '';
   };
 }
