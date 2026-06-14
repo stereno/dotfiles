@@ -5,20 +5,8 @@
     interactiveShellInit = ''
       function __tmux_auto_rename --on-variable PWD
           if not set -q TMUX; return; end
-
-          set -l git_toplevel (git rev-parse --show-toplevel 2>/dev/null)
-
-          if test -n "$git_toplevel"
-              set -l branch (git branch --show-current 2>/dev/null)
-              if test -n "$branch"
-                  tmux rename-window $branch
-              else
-                  tmux rename-window (basename $git_toplevel)
-              end
-              tmux rename-session (basename $git_toplevel)
-          else
-              tmux rename-window (basename $PWD)
-          end
+          __tmux_rename_async $PWD &
+          disown
       end
       __tmux_auto_rename
     '';
@@ -28,6 +16,22 @@
         set -l selected (ghq list --full-path | fzf --tmux)
         or return
         cd $selected
+      '';
+
+      __tmux_rename_async = ''
+        set -l dir $argv[1]
+        set -l git_toplevel (git -C $dir rev-parse --show-toplevel 2>/dev/null)
+        if test -n "$git_toplevel"
+            set -l branch (git -C $git_toplevel branch --show-current 2>/dev/null)
+            if test -n "$branch"
+                tmux rename-window $branch
+            else
+                tmux rename-window (basename $git_toplevel)
+            end
+            tmux rename-session (basename $git_toplevel)
+        else
+            tmux rename-window (basename $dir)
+        end
       '';
 
       fish_user_key_bindings = ''
