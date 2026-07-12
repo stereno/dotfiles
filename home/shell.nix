@@ -26,8 +26,13 @@
       tp = ''
         set -l selected (ghq list --full-path | fzf --tmux)
         or return
-        cd $selected
-        commandline -f repaint
+
+        if set -q HERDR_ENV; and test "$HERDR_ENV" = 1
+          herdr workspace create --cwd $selected --focus
+        else
+          cd $selected
+          commandline -f repaint
+        end
       '';
 
       fish_user_key_bindings = ''
