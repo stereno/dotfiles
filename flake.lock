@@ -29,15 +29,16 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1783821372,
-        "narHash": "sha256-foqnazFkRve37QrMfgT2CKfzJcmhMpVwxPUJiKf6woE=",
-        "owner": "ogulcancelik",
+        "lastModified": 1787161794,
+        "narHash": "sha256-sEGIN3dLZasaHob3EHscWBCIQHflMQVchYmzgsETDk4=",
+        "owner": "herdrdev",
         "repo": "herdr",
-        "rev": "4ca6cac445a6aa45eb3b8462f66cd595d0c01364",
+        "rev": "9eb521456ac0d19d3ab3d9d7cea3cca10baa8a4c",
         "type": "github"
       },
       "original": {
-        "owner": "ogulcancelik",
+        "owner": "herdrdev",
+        "ref": "v0.8.2",
         "repo": "herdr",
         "type": "github"
       }
@@ -74,11 +75,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783823409,
-        "narHash": "sha256-OI4IkRjRXa1e7hYmCGJDPDq5H/kPwhsyoS80cNUF9fI=",
+        "lastModified": 1787797243,
+        "narHash": "sha256-8+Q7NOB7RPajRjA4pbCDLzqH+MTjnG9x6LUPLfL2joA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "7566825d4652a1b885bd4ce65bd9e8def432fec9",
+        "rev": "99c9ec63390f1d8c14d95d9e8b17cc29cfbd4e11",
         "type": "github"
       },
       "original": {
@@ -89,11 +90,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1783776592,
-        "narHash": "sha256-UgCQzxeWI75XM8G+hPrPh+MKzEPjG3SpAj7dtqSbksA=",
+        "lastModified": 1787736819,
+        "narHash": "sha256-cV5xEJJK3BvhU8rEd4mC9UsmDi5qscv/kzGPhBRC5WA=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "e7a3ca8092b61ff85b6a45bf863ea2b2d6a661b3",
+        "rev": "9fbb54b33e91ee4ca368e35a78e0613c720600b3",
         "type": "github"
       },
       "original": {
@@ -134,11 +135,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1783574839,
-        "narHash": "sha256-ICof1tV4/9XheBLBGf7dhMhfMq4dOs1zwTHrr7zGFlA=",
+        "lastModified": 1785762349,
+        "narHash": "sha256-jZhZkzAwc7f3exzcTDJWP2WCAchCv0iNC3UF/QsahdQ=",
         "owner": "nix-community",
         "repo": "plasma-manager",
-        "rev": "c551f0687658e4bb699cfff6015436ad7ee57a0d",
+        "rev": "a19a2a029fa180911bd89c554dca1616e10f4c1d",
         "type": "github"
       },
       "original": {
