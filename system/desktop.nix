@@ -30,6 +30,9 @@ in
   # KDE Plasma 6
   services.desktopManager.plasma6.enable = true;
 
+  # SSH 作業中も Plasma のアイドル判定でサスペンドさせない
+  systemd.sleep.settings.Sleep.AllowSuspend = false;
+
   # オーディオ (GNOME は暗黙的に有効化していたが、KDE では明示的に必要)
   services.pipewire = {
     enable = true;
