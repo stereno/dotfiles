@@ -41,9 +41,9 @@
     };
 
     shellAbbrs = {
-      # NixOS rebuild
-      nrs = "sudo nixos-rebuild switch --flake ~/dotfiles#$(hostname)";
-      nrt = "sudo nixos-rebuild test --flake ~/dotfiles#$(hostname)";
+      # NixOS rebuild（flake評価は一般ユーザー、切り替え時だけsudo）
+      nrs = "nixos-rebuild switch --flake ~/dotfiles#$(hostname) --sudo";
+      nrt = "nixos-rebuild test --flake ~/dotfiles#$(hostname) --sudo";
 
       # Git
       gs = "git status";
