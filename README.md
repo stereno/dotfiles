@@ -62,8 +62,14 @@ NixOS 側の Vault が空で、Android または Windows に既存 Vault があ�
 正本と確認した一台だけを最初に接続します。NixOS 側が完全同期になったことを確認してから
 もう一台を接続します。Obsidian Sync と Syncthing を同じ Vault で同時利用しません。
 
-`.stignore` は端末ローカルです。NixOS と同じ workspace/plugin-state 除外方針を
-Android と Windows にも設定します。
+NixOS 側の ignore patterns は `system/syncthing.nix` の
+`folders."obsidian-vault".ignorePatterns` で宣言し、Syncthing の REST API 経由で
+適用します。Workspace、mobile workspace、原子的書き込みの一時ファイルだけを
+除外し、plugin 本体・plugin 設定・theme・Vault 設定は同期します。
+
+`.stignore` は端末ローカルで、それ自体は同期されません。NixOS と同じパターンを
+Android と Windows にも設定します。全端末で folder の `Ignore Permissions` も
+有効にします。
 
 ### 新しい peer の追加
 

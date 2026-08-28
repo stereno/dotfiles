@@ -29,6 +29,20 @@ in
         path = "${config.users.users.user.home}/Documents/Obsidian";
         devices = builtins.attrNames peers;
         type = "sendreceive";
+        ignorePerms = true;
+        ignorePatterns = [
+          "// Obsidian: 端末固有で頻繁に更新されるUI状態"
+          "(?d)/.obsidian/workspace.json"
+          "(?d)/.obsidian/workspace-mobile.json"
+          "(?d)/.obsidian/workspaces.json"
+
+          "// Obsidian/plugin: 原子的書き込みの一時ファイル"
+          "(?d)/.obsidian/**/.~*"
+
+          "// Syncthing内部"
+          "(?d)/.stversions"
+          "(?d)/.stfolder"
+        ];
         versioning = {
           type = "staggered";
           params.maxAge = "2592000";
