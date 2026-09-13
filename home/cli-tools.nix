@@ -1,4 +1,34 @@
-{ pkgs, inputs, ... }:
+{ lib, pkgs, inputs, ... }:
+let
+  # Upstream Hermes still uses deprecated stdenv platform aliases. Build its
+  # minimal package with equivalent current attributes and the full feature set.
+  compatStdenv = pkgs.stdenv // {
+    isLinux = pkgs.stdenv.hostPlatform.isLinux;
+    isDarwin = pkgs.stdenv.hostPlatform.isDarwin;
+  };
+  hermesAgent = inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.minimal.override {
+    stdenv = compatStdenv;
+    extraDependencyGroups = [
+      "anthropic"
+      "azure-identity"
+      "bedrock"
+      "daytona"
+      "dingtalk"
+      "edge-tts"
+      "exa"
+      "fal"
+      "feishu"
+      "firecrawl"
+      "hindsight"
+      "honcho"
+      "messaging"
+      "modal"
+      "parallel-web"
+      "tts-premium"
+      "voice"
+    ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [ "matrix" ];
+  };
+in
 {
   home.packages = with pkgs; [
     btop
@@ -10,7 +40,7 @@
     codex
     codex-acp
     herdr # agent-aware terminal multiplexer
-    inputs.hermes-agent.packages.${pkgs.stdenv.hostPlatform.system}.default
+    hermesAgent
     nodejs_22
     tree
     ghq
