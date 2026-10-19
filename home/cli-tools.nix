@@ -19,8 +19,6 @@ let
       "fal"
       "feishu"
       "firecrawl"
-      "hindsight"
-      "honcho"
       "messaging"
       "modal"
       "parallel-web"
@@ -36,11 +34,10 @@ in
     fd
     jq
     eza
-    claude-code
     codex
-    codex-acp
     herdr # agent-aware terminal multiplexer
     hermesAgent
+    pi-coding-agent
     nodejs_22
     tree
     ghq

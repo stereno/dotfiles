@@ -6,6 +6,5 @@
     ./remote-desktop.nix
     ./tailscale.nix
     ./syncthing.nix
-    ./pi-sandbox/host.nix
   ];
 }

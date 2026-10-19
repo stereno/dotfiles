@@ -1,4 +1,0 @@
-{ pij, ... }:
-{
-  environment.systemPackages = [ pij ];
-}

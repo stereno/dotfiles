@@ -5,7 +5,6 @@
     ./neovim.nix
     ./tmux.nix
     ./cli-tools.nix
-    ./claude.nix
   ];
 
   home.username = "user";

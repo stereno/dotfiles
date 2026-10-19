@@ -55,7 +55,6 @@
 
       # AI CLI
       cx = "codex";
-      cxa = "codex-acp";
 
       # eza
       ls = "eza";
