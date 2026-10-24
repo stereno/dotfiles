@@ -98,7 +98,12 @@
       inline_height = 20;
       show_preview = true;
       enter_accept = false;
-      search.filters = [ "directory" "workspace" "session" "global" ];
+      search.filters = [
+        "directory"
+        "workspace"
+        "session"
+        "global"
+      ];
     };
   };
 

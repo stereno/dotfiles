@@ -1,4 +1,9 @@
-{ lib, pkgs, inputs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   # Upstream Hermes still uses deprecated stdenv platform aliases. Build its
   # minimal package with equivalent current attributes and the full feature set.
@@ -24,7 +29,8 @@ let
       "parallel-web"
       "tts-premium"
       "voice"
-    ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [ "matrix" ];
+    ]
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [ "matrix" ];
   };
 in
 {

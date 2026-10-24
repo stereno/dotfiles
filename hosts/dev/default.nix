@@ -2,13 +2,18 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [
+    # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -41,7 +46,6 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-
   # Configure keymap in X11
   # services.xserver.xkb.layout = "us";
   # services.xserver.xkb.options = "eurosign:e,caps:escape";
@@ -64,7 +68,12 @@
   users.users.user = {
     isNormalUser = true;
     shell = pkgs.fish;
-    extraGroups = [ "wheel" "networkmanager" "input" "uinput" ]; # Enable 'sudo' for the user.
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+      "input"
+      "uinput"
+    ]; # Enable 'sudo' for the user.
   };
 
   programs.fish.enable = true;
@@ -122,4 +131,3 @@
   system.stateVersion = "25.11"; # Did you read the comment?
 
 }
-

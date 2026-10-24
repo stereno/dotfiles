@@ -40,9 +40,19 @@
       nerd-fonts.noto
     ];
     fontconfig.defaultFonts = {
-      serif = [ "Noto Serif CJK JP" "Noto Serif" ];
-      sansSerif = [ "Inter" "Noto Sans CJK JP" "Noto Sans" ];
-      monospace = [ "NotoSansM Nerd Font Mono" "Noto Sans Mono CJK JP" ];
+      serif = [
+        "Noto Serif CJK JP"
+        "Noto Serif"
+      ];
+      sansSerif = [
+        "Inter"
+        "Noto Sans CJK JP"
+        "Noto Sans"
+      ];
+      monospace = [
+        "NotoSansM Nerd Font Mono"
+        "Noto Sans Mono CJK JP"
+      ];
       emoji = [ "Noto Color Emoji" ];
     };
   };

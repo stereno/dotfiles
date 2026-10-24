@@ -32,48 +32,58 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, plasma-manager, herdr, ... }@inputs:
-  let
-    overlays = [ herdr.overlays.default ];
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      plasma-manager,
+      herdr,
+      ...
+    }@inputs:
+    let
+      overlays = [ herdr.overlays.default ];
 
-    mkHome = system: modules: home-manager.lib.homeManagerConfiguration {
-      pkgs = import nixpkgs {
-        inherit system overlays;
-        config.allowUnfree = true;
+      mkHome =
+        system: modules:
+        home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs {
+            inherit system overlays;
+            config.allowUnfree = true;
+          };
+          extraSpecialArgs = { inherit inputs; };
+          modules = modules;
+        };
+    in
+    {
+      nixosConfigurations.dev = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
+        specialArgs = { inherit inputs; };
+        modules = [
+          ./hosts/dev
+          ./system
+          home-manager.nixosModules.home-manager
+          {
+            nixpkgs.overlays = overlays;
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.backupFileExtension = "bak";
+            home-manager.overwriteBackup = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
+            home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
+            home-manager.users.user = import ./home;
+          }
+        ];
       };
-      extraSpecialArgs = { inherit inputs; };
-      modules = modules;
-    };
-  in
-  {
-    nixosConfigurations.dev = nixpkgs.lib.nixosSystem {
-      system = "x86_64-linux";
-      specialArgs = { inherit inputs; };
-      modules = [
-        ./hosts/dev
-        ./system
-        home-manager.nixosModules.home-manager
-        {
-          nixpkgs.overlays = overlays;
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.backupFileExtension = "bak";
-          home-manager.overwriteBackup = true;
-          home-manager.extraSpecialArgs = { inherit inputs; };
-          home-manager.sharedModules = [ plasma-manager.homeModules.plasma-manager ];
-          home-manager.users.user = import ./home;
-        }
-      ];
-    };
 
-    homeConfigurations = {
-      core = mkHome "x86_64-linux" [
-        ./home/core.nix
-      ];
-      desktop = mkHome "x86_64-linux" [
-        plasma-manager.homeModules.plasma-manager
-        ./home/desktop.nix
-      ];
+      homeConfigurations = {
+        core = mkHome "x86_64-linux" [
+          ./home/core.nix
+        ];
+        desktop = mkHome "x86_64-linux" [
+          plasma-manager.homeModules.plasma-manager
+          ./home/desktop.nix
+        ];
+      };
     };
-  };
 }
