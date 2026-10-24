@@ -34,7 +34,6 @@
 
   outputs =
     {
-      self,
       nixpkgs,
       home-manager,
       plasma-manager,
@@ -52,7 +51,7 @@
             config.allowUnfree = true;
           };
           extraSpecialArgs = { inherit inputs; };
-          modules = modules;
+          inherit modules;
         };
     in
     {

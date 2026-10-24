@@ -1,9 +1,4 @@
 { pkgs, ... }:
-let
-  displayOutput = "HDMI-A-1";
-  originalMode = "1920x1200@59.95";
-  kscreen = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor";
-in
 {
   # Sunshine ストリーミングサーバー（リモートデスクトップ用）
   # TODO: nixpkgs upstream で sunshine のビルドが修正されたら enable に戻す
