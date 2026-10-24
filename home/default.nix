@@ -11,6 +11,7 @@
     ./obsidian.nix
     ./neovim.nix
     ./cli-tools.nix
+    ./pi.nix
   ];
 
   home.stateVersion = "25.11";

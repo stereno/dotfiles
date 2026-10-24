@@ -43,7 +43,6 @@ in
     codex
     herdr # agent-aware terminal multiplexer
     hermesAgent
-    pi-coding-agent
     nodejs_22
     tree
     ghq
