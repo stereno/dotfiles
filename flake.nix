@@ -30,6 +30,10 @@
       url = "github:pyproject-nix/uv2nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    git-hooks = {
+      url = "github:cachix/git-hooks.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -38,10 +42,25 @@
       home-manager,
       plasma-manager,
       herdr,
+      git-hooks,
       ...
     }@inputs:
     let
       overlays = [ herdr.overlays.default ];
+
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+
+      preCommit = git-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          gitleaks.enable = true;
+          detect-private-keys.enable = true;
+          nixfmt.enable = true;
+          statix.enable = true;
+          deadnix.enable = true;
+        };
+      };
 
       mkHome =
         system: modules:
@@ -55,6 +74,23 @@
         };
     in
     {
+      checks.${system} = {
+        pre-commit = preCommit;
+        # The gitleaks hook scans only staged changes, which are empty inside
+        # the check sandbox, so scan the whole source tree here.
+        gitleaks = pkgs.runCommand "gitleaks" { } ''
+          ${pkgs.lib.getExe pkgs.gitleaks} dir --no-banner --redact --verbose ${./.}
+          touch $out
+        '';
+      };
+
+      devShells.${system}.default = pkgs.mkShell {
+        inherit (preCommit) shellHook;
+        packages = preCommit.enabledPackages;
+      };
+
+      formatter.${system} = pkgs.nixfmt-tree;
+
       nixosConfigurations.dev = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
