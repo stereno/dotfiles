@@ -1,0 +1,18 @@
+{
+  "lastChangelogVersion": "1.2.0",
+  "packages": [
+    "git:github.com/michael-denyer/pstack-claude@356c6e0f978df729eb16f227d795f34d221c5aad",
+    "git:github.com/earendil-works/pi-claude-code@70abb65186592ca788b29b3db22c3160d629c41f"
+  ],
+  "defaultProvider": "claude-code",
+  "defaultModel": "claude-opus-5-5",
+  "compaction": {
+    "enabled": false
+  },
+  "images": {
+    "autoResize": false,
+    "blockImages": true
+  },
+  "defaultProjectTrust": "ask",
+  "theme": "dark"
+}
