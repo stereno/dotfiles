@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+_: {
   programs.fish = {
     enable = true;
 
@@ -55,7 +55,6 @@
 
       # AI CLI
       cx = "codex";
-      cxa = "codex-acp";
 
       # eza
       ls = "eza";
@@ -99,7 +98,12 @@
       inline_height = 20;
       show_preview = true;
       enter_accept = false;
-      search.filters = [ "directory" "workspace" "session" "global" ];
+      search.filters = [
+        "directory"
+        "workspace"
+        "session"
+        "global"
+      ];
     };
   };
 

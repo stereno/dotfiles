@@ -1,6 +1,9 @@
 { lib, ... }: {
   nix.settings = {
-    experimental-features = [ "nix-command" "flakes" ];
+    experimental-features = [
+      "nix-command"
+      "flakes"
+    ];
     sandbox = true;
     sandbox-fallback = false;
     trusted-users = lib.mkForce [ "root" ];

@@ -59,8 +59,8 @@
         height = 44;
         floating = true;
         widgets = [
-          { kickoff = {}; }
-          { iconTasks = {}; }
+          { kickoff = { }; }
+          { iconTasks = { }; }
           "org.kde.plasma.marginsseparator"
           {
             digitalClock = {
@@ -72,7 +72,7 @@
               };
             };
           }
-          { systemTray = {}; }
+          { systemTray = { }; }
         ];
       }
     ];

@@ -1,4 +1,9 @@
-{ lib, pkgs, inputs, ... }:
+{
+  lib,
+  pkgs,
+  inputs,
+  ...
+}:
 let
   # Upstream Hermes still uses deprecated stdenv platform aliases. Build its
   # minimal package with equivalent current attributes and the full feature set.
@@ -19,14 +24,13 @@ let
       "fal"
       "feishu"
       "firecrawl"
-      "hindsight"
-      "honcho"
       "messaging"
       "modal"
       "parallel-web"
       "tts-premium"
       "voice"
-    ] ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [ "matrix" ];
+    ]
+    ++ lib.optionals pkgs.stdenv.hostPlatform.isLinux [ "matrix" ];
   };
 in
 {
@@ -36,11 +40,10 @@ in
     fd
     jq
     eza
-    claude-code
     codex
-    codex-acp
     herdr # agent-aware terminal multiplexer
     hermesAgent
+    pi-coding-agent
     nodejs_22
     tree
     ghq

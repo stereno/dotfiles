@@ -1,9 +1,4 @@
 { pkgs, ... }:
-let
-  displayOutput = "HDMI-A-1";
-  originalMode = "1920x1200@59.95";
-  kscreen = "${pkgs.kdePackages.libkscreen}/bin/kscreen-doctor";
-in
 {
   # Sunshine ストリーミングサーバー（リモートデスクトップ用）
   # TODO: nixpkgs upstream で sunshine のビルドが修正されたら enable に戻す
@@ -17,8 +12,22 @@ in
 
   # Sunshine ポートは Tailscale 経由のみ許可
   networking.firewall.interfaces.tailscale0 = {
-    allowedTCPPorts = [ 47984 47985 47986 47987 47988 47989 47990 48010 ];
-    allowedUDPPorts = [ 47998 47999 48000 48010 ];
+    allowedTCPPorts = [
+      47984
+      47985
+      47986
+      47987
+      47988
+      47989
+      47990
+      48010
+    ];
+    allowedUDPPorts = [
+      47998
+      47999
+      48000
+      48010
+    ];
   };
 
   # 仮想入力デバイス（マウス・キーボード）に必要
