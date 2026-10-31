@@ -12,6 +12,7 @@
     ./neovim.nix
     ./cli-tools.nix
     ./pi.nix
+    ./agent-sandbox.nix
   ];
 
   home.stateVersion = "25.11";
