@@ -22,6 +22,13 @@ in
     description = "Absolute path of this repository's checkout.";
   };
 
+  options.dotfiles.pi.writableFiles = lib.mkOption {
+    type = lib.types.listOf lib.types.str;
+    readOnly = true;
+    default = map (name: "${source}/${name}") writable;
+    description = "Working-tree files that ~/.pi/agent links to and pi writes.";
+  };
+
   config = {
     home.packages = [
       pkgs.pi-coding-agent
