@@ -10,12 +10,28 @@ let
 
   common = {
     allowedPackages = commonTools ++ [ pkgs.gh ];
-    allowNix = true;
+    # Nix stays out: the agent cannot reach the daemon or read the store beyond
+    # allowedPackages. Work on this repository runs outside the sandbox.
     allowUnixSockets = true;
+    # Writes reach only the listed hosts. Every other host is read-only, so
+    # documentation and package registries need no entry. Blocked requests are
+    # logged to proxy.log under ~/.local/state/agent-sandbox/<session>.
+    allowedDomains = {
+      "anthropic.com" = "*";
+      "claude.com" = "*";
+      "github.com" = "*";
+      "githubusercontent.com" = [
+        "GET"
+        "HEAD"
+      ];
+      "*" = [
+        "GET"
+        "HEAD"
+      ];
+    };
     rwDirs = [ "$HOME/.claude" ];
     roFiles = [
       "$HOME/.config/git/config"
-      "/etc/nix/nix.conf"
       "$HOME/.config/herdr/herdr.sock"
     ];
     # Values are shell expressions expanded at launch under `set -u`. The `-`
@@ -46,6 +62,8 @@ let
       outName = "pi-sandboxed";
       # The pi-claude-code backend spawns `claude`.
       allowedPackages = [ pkgs.claude-code ];
+      # The OpenCode subscription is a pi provider.
+      allowedDomains."opencode.ai" = "*";
       # Declared directly so the launcher follows its symlinks. The
       # working-tree files they land on need their own binds.
       rwDirs = [ "$HOME/.pi/agent" ];
