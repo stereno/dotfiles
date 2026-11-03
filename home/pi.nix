@@ -31,10 +31,7 @@ in
   };
 
   config = {
-    home.packages = [
-      pkgs.pi-coding-agent
-      pkgs.claude-code
-    ];
+    home.packages = [ pkgs.pi-coding-agent ];
 
     home.file =
       lib.genAttrs (map (name: ".pi/agent/${name}") writable) (target: {
