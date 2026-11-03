@@ -95,6 +95,11 @@
 
       formatter.${system} = pkgs.nixfmt-tree;
 
+      templates.agent-devshell = {
+        path = ./templates/agent-devshell;
+        description = "devShell whose pi and claude run sandboxed over the shell's tools";
+      };
+
       nixosConfigurations.dev = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
         specialArgs = { inherit inputs; };
