@@ -40,6 +40,7 @@ in
     fd
     jq
     eza
+    claude-code
     codex
     herdr # agent-aware terminal multiplexer
     hermesAgent
