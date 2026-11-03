@@ -60,10 +60,22 @@ let
       pkg = pkgs.pi-coding-agent;
       binName = "pi";
       outName = "pi-sandboxed";
-      # The pi-claude-code backend spawns `claude`.
-      allowedPackages = [ pkgs.claude-code ];
-      # The OpenCode subscription is a pi provider.
-      allowedDomains."opencode.ai" = "*";
+      # The pi-claude-code backend spawns `claude`. pi installs npm packages
+      # with `npm`.
+      allowedPackages = [
+        pkgs.claude-code
+        pkgs.nodejs
+      ];
+      # The OpenCode and xAI subscriptions are pi providers. pi-web-access
+      # searches through Exa's MCP endpoint, which takes POST.
+      allowedDomains = {
+        "opencode.ai" = "*";
+        "x.ai" = "*";
+        "exa.ai" = "*";
+      };
+      # The key lives outside the repository. Without it pi-web-access falls
+      # back to the rate-limited keyless MCP.
+      env.EXA_API_KEY = "$(cat \"$HOME/.config/exa/api-key\" 2>/dev/null || true)";
       # Declared directly so the launcher follows its symlinks. The
       # working-tree files they land on need their own binds.
       rwDirs = [ "$HOME/.pi/agent" ];

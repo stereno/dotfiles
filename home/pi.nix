@@ -5,13 +5,14 @@
   ...
 }:
 let
-  # pi rewrites these files itself (/model, /settings, pi install, /setup-pstack),
-  # so they link to the working tree instead of the store. pi's writes land in
-  # the checkout and show up in `git diff`.
+  # pi rewrites these files itself (/model, /settings, pi install, /setup-pstack,
+  # the pi-web-access curator), so they link to the working tree instead of the
+  # store. pi's writes land in the checkout and show up in `git diff`.
   writable = [
     "settings.json"
     "mcp.json"
     "pstack-models.md"
+    "web-search.json"
   ];
   source = "${config.dotfiles.path}/home/pi";
 in
