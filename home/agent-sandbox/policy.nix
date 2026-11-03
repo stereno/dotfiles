@@ -64,12 +64,8 @@ let
       pkg = pkgs.pi-coding-agent;
       binName = "pi";
       outName = "pi-sandboxed";
-      # The pi-claude-code backend spawns `claude`. pi installs npm packages
-      # with `npm`.
-      allowedPackages = [
-        pkgs.claude-code
-        pkgs.nodejs
-      ];
+      # pi installs npm packages with `npm`.
+      allowedPackages = [ pkgs.nodejs ];
       # The OpenCode and xAI subscriptions are pi providers. pi-web-access
       # searches through Exa's MCP endpoint, which takes POST.
       allowedDomains = {
